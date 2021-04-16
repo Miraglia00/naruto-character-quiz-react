@@ -1,13 +1,133 @@
-body {
-  margin: 0;
+@font-face {
+  font-family: 'njnaruto';
+  src: local('njnaruto'), url('fonts/njnaruto.ttf') format('truetype');
+}
+
+html, body, #root, .App {
+  height: 100% !important;
+  margin: 0 !important;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overflow:hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.full-page {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.main-menu{
+  background-image: url("/src/images/mobile_mainmenu.jpg");
+}
+
+.full-bg{
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.game-title{
+  font-family: 'njnaruto';
+  letter-spacing: 0.3rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.title-container{
+  position: absolute;
+  padding: 20px;
+  top:0;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orange-bg{
+  background-color: #ff943d;
+}
+
+.link-img{
+  width: 100px;
+  position: absolute;
+  margin-right:30rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.link {
+  font-family: 'njnaruto';
+  letter-spacing: 0.2rem;
+  text-decoration: none;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.link:hover .link-img{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.smaller {
+  font-size: 2.0rem;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .main-menu{
+    background-image: url("/src/images/mainmenu.png");
+  }
+
+  h1.game-title{
+    font-size: 3.5rem;
+  } 
+  h2.game-title {
+    font-size: 2.0rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-menu{
+    background-image: url("/src/images/mainmenu.png");
+  }
+
+  h1.game-title{
+    font-size: 3.5rem;
+  } 
+  h2.game-title {
+    font-size: 2.0rem;
+  }
+}
+
+
