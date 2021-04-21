@@ -7,8 +7,9 @@ import {SettingsContext} from '../states/SettingsContext.js'
 
 const Main = () => {
     const [getSettings] = useContext(SettingsContext)
-
-    const [play, { stop }] = useSound(kunai_hover, (getSettings.sound) ? {volume: 0.1} : {volume: 0.0});
+    const vol = (getSettings.sound) ? 0.1 :  0.0
+    
+    const [play, { stop }] = useSound(kunai_hover, {volume: vol, interrupt:true});
 
     return (
         <div className='flex-grow flex justify-center items-center'>
