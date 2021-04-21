@@ -1,25 +1,30 @@
 import PropTypes from 'prop-types'
 import {useLocation} from 'react-router-dom'
+import {useContext} from 'react'
+import { SettingsContext } from '../states/SettingsContext'
 
 
 const GameTitle = ({title}) => {
+
+    const [getSettings] = useContext(SettingsContext)
     const loc = useLocation()
-    switch(loc.pathname){
-        case '/start':
-            title = 'Start Game'
-            break
-        case '/settings':
-            title='Settings'
-            break
-        case '/about':
-            title='About'
-            break
-        default:
-            break
+
+    const setTitleByLoc = () => {
+        switch(loc.pathname){
+            case '/start':
+                return 'Start Game'
+            case '/settings':
+               return 'Settings'
+            case '/about':
+                return 'About'
+            default:
+                break
+        }
+        return title
     }
     return (
         <div className='self-center text-center pt-5'>
-            <h1 className='text-6xl sm:text-7xl md:text-8xl'>{title}</h1>
+            <h1 className='text-4xl lg:text-5xl break-words'>{setTitleByLoc()}</h1>
 
             {loc.pathname === '/' ? <h2 className='mt-4 text-base sm:text-xl md:text-2xl'>Character Quiz</h2> : ''}
         </div>
