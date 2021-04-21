@@ -1,7 +1,7 @@
 import {useContext} from 'react'
 import {SettingsContext} from '../states/SettingsContext.js'
 
-const SoundComponent = ({changeVol}) => {
+const SoundComponent = () => {
 
     const [getSettings, setSettings] = useContext(SettingsContext)
 
@@ -10,7 +10,7 @@ const SoundComponent = ({changeVol}) => {
         setSettings({...getSettings, sound: !getSettings.sound})
     }
     return (
-        <div className='fixed p-5 fill-current scale-100 right-0' onClick={onVolumeChange}>
+        <div className='fixed p-5 fill-current scale-100 right-0 cursor-pointer' onClick={onVolumeChange}>
             {
             (getSettings.sound) ? 
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
