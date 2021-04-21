@@ -33,5 +33,10 @@ html, body, #root, .App {
   pointer-events: none;
 }
 
+.custom-container {
+  background-color: red;
+  max-width: 500px;
+}
+
 
 
