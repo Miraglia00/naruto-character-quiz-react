@@ -1,10 +1,13 @@
-import {useState} from 'react'
-import { Redirect } from 'react-router-dom';
+import {useState, useContext, useEffect} from 'react'
+import { useHistory } from 'react-router';
 import Button from '../components/Button.js'
+import { SettingsContext } from '../states/SettingsContext.js';
 
 const StartGame = () => {
 
     let [getNum, setNum] = useState(1)
+
+    const [getSettings, setSettings] = useContext(SettingsContext)
 
     const incrementNum = () => {
         if(getNum < 10) setNum((getNum+1))
@@ -15,8 +18,10 @@ const StartGame = () => {
     }
 
     const startGame = () => {
-        return <Redirect to="/game" />
+        console.log('katt')
+       setSettings({...getSettings, started: true, questions: getNum})
     }
+
 
     return (
         <div className='flex-grow flex flex-col justify-between items-center mt-32 md:mt-40 mb-10 text-base sm:text-xl md:text-2xl'>
