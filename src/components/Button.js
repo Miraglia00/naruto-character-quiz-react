@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const Button = ({color, text, onClick, border, p, link}) => {
     return (link) ?
-        <Link to={link} className={`custom-button p-${p} ${(border) ? 'border-2 rounded border-black' : ''}`} style={{backgroundColor: color}}>{text}</Link>
+        <Link onClick={onClick} to={link} className={`custom-button p-${p} ${(border) ? 'border-2 rounded border-black' : ''}`} style={{backgroundColor: color}}>{text}</Link>
         :
         <button className={`custom-button p-${p} ${(border) ? 'border-2 rounded border-black' : ''}`} style={{backgroundColor: color}} onClick={onClick}>{text}</button>
 }
