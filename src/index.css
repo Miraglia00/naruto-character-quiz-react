@@ -21,15 +21,21 @@ html, body, #root, .App {
   background-size: cover;
 }
 
+.links {
+  position: relative;
+  width: 800px;
+  margin:auto
+}
+
 .link:hover .link-img{
   opacity: 1;
   pointer-events: auto;
 }
 
 .link-img {
-  position: absolute;
   opacity: 0;
-  left:25rem;
+  position: absolute;
+  left:0;
   pointer-events: none;
 }
 
