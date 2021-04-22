@@ -6,7 +6,8 @@ export const SettingsProvider = (props) => {
     const [getSettings, setSettings] = useState({
         sound: false,
         started: false,
-        questions: 1
+        questions: 1,
+        curr_question: 0
     })
 
     return (
