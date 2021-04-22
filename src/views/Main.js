@@ -4,6 +4,7 @@ import useSound from 'use-sound'
 import kunai_hover from '../sounds/kunai_hover.wav'
 import {useContext} from 'react'
 import {SettingsContext} from '../states/SettingsContext.js'
+import Modal from '../components/Modal.js'
 
 const Main = () => {
     const [getSettings] = useContext(SettingsContext)
@@ -12,10 +13,10 @@ const Main = () => {
     const [play, { stop }] = useSound(kunai_hover, {volume: vol, interrupt:true});
 
     return (
-        <div className='flex-grow flex justify-center items-center'>
+        <div className='flex-grow flex flex-col justify-center items-center'>
             <div className='links'>
             <div className='mb-3 text-center md:text-left'>
-                <Link to='/start' className='link' onMouseEnter={play} onMouseLeave={stop}>
+                <Link to={(getSettings.started) ? '/game' : '/start'} className='link' onMouseEnter={play} onMouseLeave={stop}>
                     <img className='h-8 inline-block link-img' src={kunai} alt=''></img>
                     <div className='text-4xl sm:text-6xl' style={{display: 'inline-block'}}>Start Game</div>
                 </Link>
