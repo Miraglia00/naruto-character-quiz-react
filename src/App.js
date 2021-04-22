@@ -15,12 +15,12 @@ const App = () => {
     <SettingsProvider>
     <Router>
       <div className='xs:container bg-image tracking-wide h-screen flex flex-col items-stretch'>
-     <GameTitle />
+      <GameTitle />
       <SoundComponent />
       <BackButtonComponent />
 
       <Route path='/' exact render={(props) =>(
-        <Main />
+        <Main /> //MAINBE VMIERT HATALMAS A KEPERENYO,VAN SCROLL, KITOLJA A SOUND GOMBOT SZELERE
       )}>
       </Route>
 
