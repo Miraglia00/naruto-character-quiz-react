@@ -4,12 +4,12 @@
 }
 
 html, body, #root, .App {
-
+  background-color: #ff943d;
   
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  overflow:hidden;
+  overflow: auto !important;
 
   font-family: 'njnaruto';
 }
@@ -40,8 +40,25 @@ html, body, #root, .App {
 }
 
 .custom-container {
-  background-color: red;
   max-width: 500px;
+}
+
+.modal-base{
+  position: absolute;
+  width: 100% !important;
+}
+
+@media (max-width: 800px) {
+  .links{
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1200px){
+  .bg-image{
+    background-color: #ff943d !important;
+    background-image: none !important;
+  }
 }
 
 
