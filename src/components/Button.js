@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
 
-const Button = ({color, text, onClick, border, p, link}) => {
-    return (link) ?
-        <Link onClick={onClick} to={link} className={`custom-button p-${p} ${(border) ? 'border-2 rounded border-black' : ''}`} style={{backgroundColor: color}}>{text}</Link>
-        :
-        <button className={`custom-button p-${p} ${(border) ? 'border-2 rounded border-black' : ''}`} style={{backgroundColor: color}} onClick={onClick}>{text}</button>
+const Button = ({color, hover_color, text, onClick, border, p, border_color, border_opacity, classes}) => {
+    return (
+        <button
+        className={`p-${p} ${(border) ? `border-2 rounded border-${border_color} border-opacity-${border_opacity}` : ''} bg-${color}-500 text-black rounded shadow hover:bg-${hover_color}-500 hover:shadow-xl outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ${classes}`}
+        type="button"
+        onClick={onClick}
+        >{text}</button>
+    )
 }
 
 Button.defaultProps = {
     color: 'transparent',
-    p: '2'
+    p: '2',
+    border_color: 'black',
+    border_opacity: '10'
 }
 
 Button.prototype = {
@@ -19,7 +23,6 @@ Button.prototype = {
     onClick: PropTypes.func,
     border: PropTypes.bool,
     p: PropTypes.string,
-    link: PropTypes.string
 }
 
 export default Button
