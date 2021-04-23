@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import {useLocation} from 'react-router-dom'
 import {useContext} from 'react'
-import { SettingsContext } from '../states/SettingsContext'
+import { GameContext } from '../states/GameContext'
 
 
 const GameTitle = ({title}) => {
 
-    const [getSettings] = useContext(SettingsContext)
+    const [getGame] = useContext(GameContext)
     const loc = useLocation()
 
     const setTitleByLoc = () => {
@@ -24,16 +24,16 @@ const GameTitle = ({title}) => {
     }
 
     const setTitleByQuestion = () => {
-        title = `${getSettings.curr_question}/${getSettings.questions}`
+        title = `${getGame.curr_question}/${getGame.questions}`
         return title
     }
 
     return (
         <div className='self-center text-center pt-5'>
             <h1 className='text-4xl lg:text-5xl break-words'>
-                {(getSettings.started && loc.pathname == '/game') ? setTitleByQuestion() : setTitleByLoc()}
-                {(getSettings.started && loc.pathname == '/game') ? <br /> : ''}
-                {(getSettings.started && loc.pathname == '/game') ? 'question' : ''}
+                {(getGame.started && loc.pathname === '/game') ? setTitleByQuestion() : setTitleByLoc()}
+                {(getGame.started && loc.pathname === '/game') ? <br /> : ''}
+                {(getGame.started && loc.pathname === '/game') ? 'question' : ''}
             </h1>
 
             {loc.pathname === '/' ? <h2 className='mt-4 text-base sm:text-xl md:text-2xl'>Character Quiz</h2> : ''}
