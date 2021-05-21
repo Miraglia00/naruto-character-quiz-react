@@ -43,19 +43,19 @@ const BackButtonComponent = () => {
     }
 
     return (
-        <div className='fixed p-5 fill-current scale-100 left-0'>
+        <div className='back-icon'>
             <Modal text={'Are you sure to quit from game? Progress will be lost!'} yesText={'Yes'} onYesClick={YesClick} onNoClick={()=> setmodal(false)} show={modal} />
             {location.pathname !== '/' ?
                 (getGame.started) ?
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={handlegoback}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="cursor-p" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={handlegoback}>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg> 
                 :
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={handlegoback}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="cursor-p" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={handlegoback}>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg> 
             :
-            <></> }
+            <div className="empty"></div> }
         </div>
     )
 

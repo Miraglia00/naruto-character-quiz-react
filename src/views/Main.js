@@ -15,19 +15,16 @@ const Main = () => {
         <div className='flex-grow flex flex-col justify-center items-center links'>
             <div className='mb-3 text-center md:text-left'>
                 <Link to={(getSettings.started) ? '/game' : '/start'} className='link' onMouseEnter={play} onMouseLeave={stop}>
-                    <img className='h-8 inline-block link-img hidden lg:inline-block' src={kunai} alt=''></img>
                     <div className='text-4xl sm:text-6xl' style={{display: 'inline-block'}}>Start Game</div>
                 </Link>
             </div>
             <div className='mb-3 text-center md:text-left'>
                 <Link to='/settings' className='link' onMouseEnter={play} onMouseLeave={stop}>
-                    <img className='h-8 inline-block link-img hidden lg:inline-block' src={kunai} alt=''></img>
                     <div className='text-2xl sm:text-4xl' style={{display: 'inline-block'}}>Settings</div>
                 </Link>
             </div>
             <div className='mb-3 text-center md:text-left'>
                 <Link to='/about' className='link' onMouseEnter={play} onMouseLeave={stop}>
-                    <img className='h-8 inline-block link-img hidden lg:inline-block' src={kunai} alt=''></img>
                     <div className='text-2xl sm:text-4xl' style={{display: 'inline-block'}}>About</div>
                 </Link>
             </div>

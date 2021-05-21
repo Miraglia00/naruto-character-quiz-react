@@ -16,37 +16,39 @@ import PopUp from './components/PopUp.js'
 const App = () => {
 
   return (
-    <SettingsProvider>
-    <GameProvider>
-    <Loader />
-    <PopUp />
-    <Router>
-      <div className='xs:container bg-image tracking-wide h-screen flex flex-col items-stretch'>
-      <GameTitle />
-      <SoundComponent />
-      
-
-      <Route path='/' exact render={(props) =>(
-        <Main />
-      )}>
-      </Route>
-
-
-     
-      <Route path='/settings' component={Settings}></Route>
-      <Route path='/about' component={About}></Route>
+    <div class="container">
+      <SettingsProvider>
+      <GameProvider>
+      <Loader />
+      <PopUp />
       <QuestionsProvider>
-        <BackButtonComponent />
+      <Router>
+        <section className='header'>
+          <BackButtonComponent />
+          <GameTitle />
+          <SoundComponent />
+        </section>
+
+        <Route path='/' exact render={(props) =>(
+          <Main />
+        )}>
+        </Route>
+
+
+      
+        <Route path='/settings' component={Settings}></Route>
+        <Route path='/about' component={About}></Route>
+        
         <Route path='/start' component={StartGame}></Route>
         <Route path='/game' component={Game}></Route>
+
+
+          
+      </Router>
       </QuestionsProvider>
-
-
-        
-      </div>
-    </Router>
-    </GameProvider>
-    </SettingsProvider>
+      </GameProvider>
+      </SettingsProvider>
+    </div>
   );
 }
 

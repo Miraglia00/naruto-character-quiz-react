@@ -1,6 +1,7 @@
 import {useState, useContext} from 'react'
 import {useHistory} from 'react-router-dom'
 import Button from '../components/Button.js'
+import HButton from '../components/HButton.js'
 import { SettingsContext } from '../states/SettingsContext.js'
 import { GameContext } from '../states/GameContext'
 import { QuestionsContext } from '../states/QuestionsContext.js'
@@ -76,7 +77,7 @@ const StartGame = () => {
 
                 </div>
             </div>
-            <Button color={'transparent'} border={true} text={'Let\'s start!'} onClick={startGame} />
+            <HButton color={'transparent'} border={true} text={'Let\'s start!'} onClick={startGame} />
         </div>
     )
 }

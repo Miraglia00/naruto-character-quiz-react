@@ -29,7 +29,7 @@ const GameTitle = ({title}) => {
     }
 
     return (
-        <div className='self-center text-center pt-5'>
+        <div className='game-title'>
             <h1 className='text-4xl lg:text-5xl break-words'>
                 {(getGame.started && loc.pathname === '/game') ? setTitleByQuestion() : setTitleByLoc()}
                 {(getGame.started && loc.pathname === '/game') ? <br /> : ''}
