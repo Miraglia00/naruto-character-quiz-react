@@ -82,7 +82,7 @@ const Game = () => {
             setSettings({...getSettings, popup:{
                 show: true,
                 text: `Congrats! Your points ${getGame.points} out of ${getGame.questions}.`,
-                color: 'green',
+                color: 'success',
                 text_color: ''
             }})
             setGame(
@@ -103,40 +103,46 @@ const Game = () => {
     }
     
     return (!finished) ? (
-        <div className='container mx-auto text-center'>
-            <div className="container mx-auto flex max-w-md max-h-96">
-                <img src={getImage(getGame.curr_question)} alt='' className='' />
+        <div className='container text-center'>
+            <div className="text-center">
+                <img src={getImage(getGame.curr_question)} alt='' className='img-fluid image' />
             </div>
-            <div className='buttons grid grid-cols-1 md:grid-cols-2 gap-4 m-5 mt-10 font-mono font-black text-xl'>
+                <div className='row row-cols-md-2 mt-3'>
+               
                 {
                     (getGame.game_state.clicked === -1) ?    
                         getNames(getGame.curr_question).map((name, ind) =>{
-                            return <Button text={name} p={5} color={'btnorange'} border={true} onClick={()=>onClick(ind)} key={ind} />
+                            return  (
+                            <div className="col-12 mb-2">
+                                <Button text={name} className="btn-outline-dark w-100" onClick={()=>onClick(ind)} key={ind} />
+                            </div>
+                            )
                         })
                     :
                     (getGame.game_state.clicked === getGame.game_state.good) ? 
                         getNames(getGame.curr_question).map((name, ind) =>{
-                            return <Button text={name} p={5} color={(ind === getGame.game_state.good) ? 'green' : 'btnorange'} border={true} onClick={()=>onClick(ind)} key={ind} />
+                            return <div className="col-12 mb-2">
+                                    <Button text={name} p={5} className={`${(ind === getGame.game_state.good) ? 'btn-success' : 'btn-outline-dark'} w-100 disabled`} onClick={()=>onClick(ind)} key={ind} />
+                                </div>
                         })
                     :
                         getNames(getGame.curr_question).map((name, ind) =>{
-                            return <Button 
-                            text={name} p={5} 
-                            color={(ind === getGame.game_state.clicked) ? 'red' : 'btnorange'} 
-                            border={true} 
-                            border_opacity={(ind===getGame.game_state.good) ? '100':'10'} 
-                            border_color={(ind===getGame.game_state.good) ? 'green-500' : 'black'} 
+                            return <div className="col-12 mb-2">
+                            <Button 
+                            text={name} 
+                            className={`${(ind === getGame.game_state.good) ? 'btn-danger' : 'btn-outline-dark'} w-100 disabled`}
                             onClick={()=>onClick(ind)} key={ind} />
+                            </div>
                         })      
                 }
-            </div>
+                </div>
 
             {
             (getGame.game_state.clicked !== -1) ?
                 (getGame.questions === getGame.curr_question) ?
-                    <Button text={'Finish'} p={5} color={'btnorange'} border={true} classes={'w-72'} onClick={()=>finish()} /> 
+                    <Button text={'Finish'} className="btn-outline-dark" onClick={()=>finish()} /> 
                 :
-                    <Button text={'Next'} p={5} color={'btnorange'} border={true} classes={'w-72'} onClick={()=>next()} /> 
+                    <Button text={'Next'} className="btn-outline-dark" onClick={()=>next()} /> 
             :
                 null
             }

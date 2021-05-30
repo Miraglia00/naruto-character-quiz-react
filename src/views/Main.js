@@ -1,32 +1,26 @@
-import {Link} from 'react-router-dom'
 import kunai from '../images/kunai.png'
 import useSound from 'use-sound'
 import kunai_hover from '../sounds/kunai_hover.wav'
 import {useContext} from 'react'
 import {SettingsContext} from '../states/SettingsContext.js'
+import HButton from '../components/HButton.js'
 
 const Main = () => {
     const [getSettings] = useContext(SettingsContext)
-    const vol = (getSettings.sound) ? 0.1 :  0.0
+    const vol = (getSettings.sound) ? 0.3 :  0.0
     
     const [play, { stop }] = useSound(kunai_hover, {volume: vol, interrupt:true});
 
     return (
-        <div className='flex-grow flex flex-col justify-center items-center links'>
+        <div className='main-view d-flex flex-column flex-grow-1 justify-content-center'>
             <div className='mb-3 text-center md:text-left'>
-                <Link to={(getSettings.started) ? '/game' : '/start'} className='link' onMouseEnter={play} onMouseLeave={stop}>
-                    <div className='text-4xl sm:text-6xl' style={{display: 'inline-block'}}>Start Game</div>
-                </Link>
+                <HButton text="Start game" hover_img={kunai} color={"black"} onMouseEnter={play} onMouseLeave={stop} size={2} to="/start"></HButton>
             </div>
             <div className='mb-3 text-center md:text-left'>
-                <Link to='/settings' className='link' onMouseEnter={play} onMouseLeave={stop}>
-                    <div className='text-2xl sm:text-4xl' style={{display: 'inline-block'}}>Settings</div>
-                </Link>
+                <HButton text="Settings" hover_img={kunai} color={"black"} onMouseEnter={play} onMouseLeave={stop} size={3} to="/settings"></HButton>
             </div>
             <div className='mb-3 text-center md:text-left'>
-                <Link to='/about' className='link' onMouseEnter={play} onMouseLeave={stop}>
-                    <div className='text-2xl sm:text-4xl' style={{display: 'inline-block'}}>About</div>
-                </Link>
+                <HButton text="About" hover_img={kunai} color={"black"} onMouseEnter={play} onMouseLeave={stop} size={3} to="/about"></HButton>
             </div>
         </div>
     )

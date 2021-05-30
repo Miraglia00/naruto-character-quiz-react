@@ -30,13 +30,13 @@ const GameTitle = ({title}) => {
 
     return (
         <div className='game-title'>
-            <h1 className='text-4xl lg:text-5xl break-words'>
+            <h2 className=''>
                 {(getGame.started && loc.pathname === '/game') ? setTitleByQuestion() : setTitleByLoc()}
                 {(getGame.started && loc.pathname === '/game') ? <br /> : ''}
                 {(getGame.started && loc.pathname === '/game') ? 'question' : ''}
-            </h1>
+            </h2>
 
-            {loc.pathname === '/' ? <h2 className='mt-4 text-base sm:text-xl md:text-2xl'>Character Quiz</h2> : ''}
+            {loc.pathname === '/' ? <h3 className=''>Character Quiz</h3> : ''}
         </div>
     )
 }

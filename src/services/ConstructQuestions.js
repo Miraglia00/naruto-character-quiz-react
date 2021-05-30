@@ -10,16 +10,16 @@ const ConstructQuestions = async (num_questions) => {
 
         const pop = await getPopulars(num_pop)
 
-        let questions = [...rand.data.data, ...pop.data.data]
+        let characters = [...rand.data.data, ...pop.data.data]
+
+        console.log(characters)
 
         let fillers = await getCharacters(num_questions*3)
         fillers = fillers.data.data
         fillers = fillers.map((f) => { return f.name})
 
-        fillers = fillers.sort(() => Math.random() - 0.5)
-
         let ind = 0;
-        let constr_questions = questions.map((e) => {
+        let constr_questions = characters.map((e) => {
             let q = {
                 'image': e.image, 
                 'answ': e.name, 
@@ -28,9 +28,10 @@ const ConstructQuestions = async (num_questions) => {
                 ]
             }
             ind+=3
+            q.names = q.names.sort((a,b) => 0.5 - Math.random());
             return q
         })
-
+        console.log(constr_questions);
         return constr_questions;
     }else{
         getCharacters(1)

@@ -9,10 +9,10 @@ const Loader = () => {
     return(
         <div>
             {(getSettings.loader) ? 
-            <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-filter backdrop-blur-sm text-center'>
-            <div className="relative w-auto my-6 mx-auto max-w-2xl">
-                <img className='h-48 animate-spin' src={shuriken} alt=''></img>
-                <h1 className='text-3xl'>Loading...</h1>
+            <div className='loader'>
+            <div className="mx-auto d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+                <img className='w-50' src={shuriken} alt=''></img>
+                <h1 className='text-center'>Loading...</h1>
             </div>
             </div>
             : null }
