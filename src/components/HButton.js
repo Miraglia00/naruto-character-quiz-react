@@ -1,49 +1,75 @@
 import {Link} from 'react-router-dom'
-import kunai from '../images/kunai.png'
 import PropTypes from 'prop-types'
-let links;
 
-const HButton = ({text, size}) => {
-    return (
-        <div className='flex justify-center items-center' style={links}>
-            <div className='text-center md:text-left'>
-                <Link className='link'>
-                    <img className={`h-${size*3} link-img`} src={kunai} alt=''></img>
-                    <div className={getSize(size)} style={{display: 'inline-block', margin: 'auto'}}>{text}</div>
+const HButton = ({text, size, color, hover_img, location, margin, onMouseEnter, onMouseLeave, to, className, disable, onClick}) => {
+    let HButtonAligned;
+    switch(location){
+        case "left":
+            HButtonAligned = ((disable) ? 
+                <div className={`cursor-p link d-flex justify-content-center align-items-center ${className}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick}>
+                    <img className="d-none d-md-inline-flex" src={hover_img} alt='' style={{marginRight: margin+"rem"}}></img>
+                    <div className={`fs-${size} p-0 m-0`} style={{color: color}}>{text}</div>
+                </div>
+                :
+                <Link className={`link d-flex justify-content-center align-items-center ${className}`} to={to} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                    <img className="d-none d-md-inline-flex" src={hover_img} alt='' style={{marginRight: margin+"rem"}}></img>
+                    <div className={`fs-${size} p-0 m-0`} style={{color: color}}>{text}</div>
                 </Link>
-            </div>
+            )
+            break;
+        case "right":
+            HButtonAligned = ((disable) ? 
+                <div className={`cursor-p link d-flex justify-content-center align-items-center ${className}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick}>
+                    <div className={`fs-${size} p-0 m-0`} style={{color: color}}>{text}</div>
+                    <img className="d-none d-md-inline-flex r-180" src={hover_img} alt='' style={{marginLeft: margin+"rem"}}></img>
+                </div>
+                :
+                <Link className={`link d-flex justify-content-center align-items-center ${className}`} to={to} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                    <div className={`fs-${size} p-0 m-0`} style={{color: color}}>{text}</div>
+                    <img className="d-none d-md-inline-flex r-180" src={hover_img} alt='' style={{marginLeft: margin+"rem"}}></img>
+                </Link>
+            )
+            break;
+        case "both":
+            HButtonAligned = ((disable) ? 
+                <div className={`cursor-p link d-flex justify-content-center align-items-center ${className}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick}>
+                    <img className="d-none d-md-inline-flex" src={hover_img} alt='' style={{marginRight: margin+"rem"}}></img>
+                    <div className={`fs-${size} p-0 m-0`} style={{color: color}}>{text}</div>
+                    <img className="d-none d-md-inline-flex r-180" src={hover_img} alt='' style={{marginLeft: margin+"rem"}}></img>
+                </div>
+                :
+                <Link className={`link d-flex justify-content-center align-items-center ${className}`} to={to} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                    <img className="d-none d-md-inline-flex" src={hover_img} alt='' style={{marginRight: margin+"rem"}}></img>
+                    <div className={`fs-${size} p-0 m-0`} style={{color: color}}>{text}</div>
+                    <img className="d-none d-md-inline-flex r-180" src={hover_img} alt='' style={{marginLeft: margin+"rem"}}></img>
+                </Link>
+            )
+            break;
+        default:
+            break;
+    }
+
+    return (
+        <div className='h-button'>
+            {HButtonAligned}
         </div>
     )
 }
 
 HButton.defaultProps = {
-    size: 4,
+    size: 3,
+    color: "Black",
+    location: "left",
+    margin: 30,
+    to: ""
 }
 
-const getSize = (size) => {
-    switch(size){
-        case 2: 
-            links = {
-                position: 'relative',
-                width: '600px'
-            }
-            return "text-2xl sm:text-4xl";
-
-        case 4: 
-            links = {
-                position: 'relative',
-                width: '800px'
-            }
-            return "text-4xl sm:text-6xl";
-        default: 
-            links = {
-                position: 'relative',
-                width: '300px'
-            }
-            return "text-1xl sm:text-2xl";
-    }
+HButton.prototype = {
+    size: PropTypes.number,
+    color: PropTypes.string,
+    location: PropTypes.string,
+    margin: PropTypes.number,
+    to: PropTypes.string
 }
-
-
 
 export default HButton
