@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'njnaruto';
-  src: local('njnaruto'), url('fonts/njnaruto.ttf') format('truetype');
+  font-family: 'S4fonts';
+  src: local('S4fonts'), url('fonts/S4fonts.ttf') format('truetype');
 }
 
 html, body, #root, .App {
@@ -9,29 +9,30 @@ html, body, #root, .App {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: auto;
-  font-family: 'njnaruto';
+  font-family: 'S4fonts';
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-.container{
-  height: 100vh;
-  width: 100vmax;
-  background-color: red;
-  flex-direction: column;
+a:link {
+  color:black;
 }
 
-.header{
-  z-index: 999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+a:visited {
+  color:black;
 }
 
-.game-title{
-  text-align: center;
+a:hover {
+  color:black;
+}
+
+a:active {
+  color:black;
+} 
+
+.max-h{
+  height: 100vh !important;
 }
 
 .sound-icon{
@@ -44,6 +45,73 @@ html, body, #root, .App {
   height: 50px;
 }
 
+.h-button{
+  position: relative;
+  width: auto;
+  text-align: center;
+}
+
+.h-button .link img {
+  position: absolute;
+  height: 75%;
+  width: auto;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.h-button:hover .link img{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.h-button a{
+  text-decoration: none;
+}
+
+.r-180{
+  transform: rotate(180deg);
+}
+
+.arrow-btn {
+  max-width: 50px;
+  max-height: 50px;
+}
+
 .cursor-p{
   cursor: pointer;
+}
+
+.noselect{
+  -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+}
+
+.blur{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.loader{
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  top:0;
+  background-color: transparent;
+  left:0;
+}
+
+.loader img {
+  -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.image{
+  max-height: 300px !important;
 }
